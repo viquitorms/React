@@ -5,8 +5,18 @@ function Menu() {
     <>
       {pizzaData.map((pizza) => (
         <div>
-          <h2>{pizza.name}</h2>
-          <img src={pizza.photoName} alt={pizza.name} width={300} />
+          <div>
+            <h2>{pizza.name}</h2>
+            <img src={pizza.photoName} alt={pizza.name} width={300} />
+          </div>
+          <div>
+            <p>{pizza.ingredients}</p>
+            <span>${pizza.price}</span>
+            <span> - </span>
+            <span>
+              {pizza.soldOut ? 'Sold Out' : 'On Stock'}
+            </span>
+          </div>
         </div>
       ))}
     </>
