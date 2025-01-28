@@ -1,25 +1,13 @@
 import { pizzaData } from "../data/pizzaData";
+import Pizza from "./Pizza";
 
 function Menu() {
   return (
-    <>
+    <main className="menu">
       {pizzaData.map((pizza) => (
-        <div>
-          <div>
-            <h2>{pizza.name}</h2>
-            <img src={pizza.photoName} alt={pizza.name} width={300} />
-          </div>
-          <div>
-            <p>{pizza.ingredients}</p>
-            <span>${pizza.price}</span>
-            <span> - </span>
-            <span>
-              {pizza.soldOut ? 'Sold Out' : 'On Stock'}
-            </span>
-          </div>
-        </div>
+        <Pizza name={pizza.name} ingredients={pizza.ingredients} photoName={pizza.photoName} price={pizza.price} soldOut={pizza.soldOut} />
       ))}
-    </>
+    </main>
   );
 }
 

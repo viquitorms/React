@@ -4,8 +4,8 @@ function Footer() {
   const closeHour = 22;
 
   return (
-    <footer>
-      {new Date().toLocaleDateString()} - {new Date().getUTCHours()}
+    <footer className="footer">
+      {new Date().toLocaleDateString()}
     </footer>
   );
 }
