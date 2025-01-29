@@ -1,0 +1,9 @@
+.ingredients {
+    font-size: small;
+    text-wrap: wrap;
+}
+
+.price {
+    font-weight: 600;
+    font-size: small;
+}

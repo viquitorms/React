@@ -1,4 +1,6 @@
-interface IPizza{
+import "../styles/pizza.css"
+
+interface IPizza {
     name: string,
     photoName: string,
     ingredients: string,
@@ -11,11 +13,15 @@ function Pizza(props: IPizza) {
     <div>
         <div>
             <h2>{props.name}</h2>
-            <img src={props.photoName} alt={props.name} width={300} />
-            </div>
+            <img src={props.photoName} alt={props.name} width={350}/>
+        </div>
         <div>
-            <p>{props.ingredients}</p>
-            <span>${props.price}</span>
+            <p className="ingredients">
+                {props.ingredients}
+            </p>
+            <span className="price">
+                ${props.price}
+            </span>
             <span> - </span>
             <span>
                 {props.soldOut ? 'Sold Out' : 'On Stock'}
