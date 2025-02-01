@@ -1,0 +1,18 @@
+.profile {
+    width: 300px;
+    border-style: solid;
+}
+
+.textBox {
+    padding: 1rem;
+}
+
+.text {
+    color: black;
+    font-size: small;
+    font-weight: bold;
+}
+
+.image {
+    width: 100%;
+}
