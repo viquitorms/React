@@ -9,6 +9,9 @@ interface IPizza {
 }
 
 function Pizza(props: IPizza) {
+
+  if (props.soldOut) return null;
+
   return (
     <div>
         <div>
