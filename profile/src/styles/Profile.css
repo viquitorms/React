@@ -1,5 +1,5 @@
 .profile {
-    width: 300px;
+    width: 350px;
     border-style: solid;
 }
 
@@ -9,8 +9,7 @@
 
 .text {
     color: black;
-    font-size: small;
-    font-weight: bold;
+    font-size: medium;
 }
 
 .image {
