@@ -7,3 +7,12 @@
     font-weight: 600;
     font-size: small;
 }
+
+.sold-out {
+    color: #888;
+}
+
+.sold-out img {
+    filter: grayscale();
+    opacity: 0.8;
+}

@@ -9,11 +9,8 @@ interface IPizza {
 }
 
 function Pizza(props: IPizza) {
-
-  if (props.soldOut) return null;
-
   return (
-    <div>
+    <div className={`${props.soldOut ? "sold-out" : ""}`}>
         <div>
             <h2>{props.name}</h2>
             <img src={props.photoName} alt={props.name} width={350}/>
@@ -23,11 +20,7 @@ function Pizza(props: IPizza) {
                 {props.ingredients}
             </p>
             <span className="price">
-                ${props.price}
-            </span>
-            <span> - </span>
-            <span>
-                {props.soldOut ? 'Sold Out' : 'On Stock'}
+                {props.soldOut ? 'SOLD OUT' :  '$' + props.price}
             </span>
         </div>
     </div>
