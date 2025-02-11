@@ -1,5 +1,34 @@
 .steps {
-    background-color: gainsboro;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+    background-color: rgb(236, 236, 236);
     width: 550px;
-    height: 300px;
+    height: 20rem;
+}
+
+.numbers {
+    display: flex;
+    justify-content: space-around;
+}
+
+.number {
+    background-color: rgb(222, 222, 222);
+    border-radius: 100%;
+    padding: 0.5rem 0.9rem;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.button {
+    width: 8rem;
+    padding: 0.5rem;
+    background-color: blueviolet;
+    color: white;
+    font-weight: bold;
+    border: 0;
 }
