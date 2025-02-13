@@ -9,6 +9,8 @@ const messages = [
 
 export default function Steps(){
     const [step, setStep] = useState(0);
+    const [isOpen, setIsOpen] = useState(true);
+    const [textClose, setTextClose] = useState('X');
 
     function onClickNext() {
         if(step < messages.length - 1)
@@ -21,30 +23,54 @@ export default function Steps(){
         }
     }
 
+    function onClickClose() {
+        setIsOpen(!isOpen)
+
+        if(isOpen) {
+            setTextClose('O')
+        }
+        else {
+            setTextClose('X')
+        }
+    }
+
     return (
         <div className="steps">
-            <div className="numbers">
-                <div className={`${step >= 0 ? "active" : ""} number`}>
-                    <span>1</span>
-                </div>
-                <div className={`${step >= 1 ? "active" : ""} number`}>
-                    <span>2</span>
-                </div>
-                <div className={`${step >= 2 ? "active" : ""} number`}>
-                    <span>3</span>
-                </div>
+            <div className="close">
+                <button onClick={onClickClose}>
+                    {textClose}
+                </button>
             </div>
-            <div>
-                <h3 className="text">Step {step + 1}: {messages[step]}</h3>
-            </div>
-            <div className="buttons">
-                <div className="div-button">
-                    <button className="button" onClick={onClickPrevious}>Previous</button>
-                </div>
-                <div>
-                    <button className="button" onClick={onClickNext}>Next</button>
-                </div>
-            </div>
+            {
+                isOpen &&
+                (
+                    <div className="grid">
+                        <div className="numbers">
+                            <div className={`${step >= 0 ? "active" : ""} number`}>
+                                <span>1</span>
+                            </div>
+                            <div className={`${step >= 1 ? "active" : ""} number`}>
+                                <span>2</span>
+                            </div>
+                            <div className={`${step >= 2 ? "active" : ""} number`}>
+                                <span>3</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 className="text">Step {step + 1}: {messages[step]}</h3>
+                        </div>
+                        <div className="buttons">
+                            <div className="div-button">
+                                <button className="button" onClick={onClickPrevious}>Previous</button>
+                            </div>
+                            <div>
+                                <button className="button" onClick={onClickNext}>Next</button>
+                            </div>
+                        </div>
+                    </div>
+                )
+            }
         </div>
+
     );
 }
