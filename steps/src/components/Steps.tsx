@@ -14,23 +14,23 @@ export default function Steps(){
 
     function onClickNext() {
         if(step < messages.length - 1)
-        setStep(step + 1)
+        setStep((currentStep) => currentStep + 1)
     }
 
     function onClickPrevious() {
         if(step > 0) {
-            setStep(step - 1)
+            setStep((currentStep) => currentStep - 1)
         }
     }
 
     function onClickClose() {
-        setIsOpen(!isOpen)
+        setIsOpen((open) => !open)
 
         if(isOpen) {
-            setTextClose('O')
+            setTextClose(() => 'O')
         }
         else {
-            setTextClose('X')
+            setTextClose(() => 'X')
         }
     }
 
