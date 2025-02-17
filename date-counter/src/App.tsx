@@ -1,10 +1,11 @@
-
+import DateCounter from "./components/DateCounter"
+import './index.css'
 
 function App() {
 
   return (
     <>
-      <h1>Oi</h1>
+      <DateCounter />
     </>
   )
 }

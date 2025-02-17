@@ -1,0 +1,18 @@
+.box {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+}
+
+.counters-div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.counter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
