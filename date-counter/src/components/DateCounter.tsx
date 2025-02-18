@@ -69,7 +69,6 @@ export default function DateCounter() {
                         : count > 0
                         ? `${count} days from today is `
                         : `${Math.abs(count)} days ago was `
-
                     }
                 </span>
                 <span>{date.toDateString()}</span>
