@@ -5,29 +5,34 @@ export default function DateCounter() {
 
     const [step, setStep] = useState(0);
     const [count, setCount] = useState(0);
-    const [date, setDate] = useState('')
+
+    const date = new Date();
+    date.setDate(date.getDate() + count);
 
     function onClickStepPlus() {
         setStep((s) => s + 1)
-        setDate(handleDateChange)
+        handleDateChange()
     }
 
     function onClickStepMinus() {
         setStep((s) => s - 1) 
+        handleDateChange()
     }
 
     function onClickCountPlus() {
-        setCount((c) => c + 1) 
+        setCount((c) => c + step) 
+        handleDateChange()
     }
 
     function onClickCountMinus() {
-        setCount((c) => c - 1) 
+        setCount((c) => c - step)
+        handleDateChange()
     }
 
     function handleDateChange() {
         const dateNow = new Date();
 
-        return dateNow.setDate(dateNow.getDate() + (step * count)).toLocaleString()
+        return dateNow.setDate(dateNow.getDate() + (step * count))
     }
 
     return (
@@ -57,14 +62,17 @@ export default function DateCounter() {
                 </div>
             </div>
             <div>
-                {
-                    step == 0 &&
-                    <span>Today is {new Date().toDateString()}</span>
-                }
-                {
-                    (step > 0 && count > 0) &&
-                    <span>{step * count} days from today is {new Date().toDateString()}</span>
-                }
+                <span>
+                    {
+                        count === 0
+                        ? "Today is "
+                        : count > 0
+                        ? `${count} days from today is `
+                        : `${Math.abs(count)} days ago was `
+
+                    }
+                </span>
+                <span>{date.toDateString()}</span>
             </div>
         </div>
     )
