@@ -1,7 +1,7 @@
 import '../assets/css/Header.css'
 import { Box, Typography } from "@mui/material";
 
-function Header() {
+function SubHeader() {
     return ( 
         <header className="header">
             <Box color='secondary'>
@@ -13,4 +13,4 @@ function Header() {
      );
 }
 
-export default Header;
+export default SubHeader;
