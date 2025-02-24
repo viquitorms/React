@@ -3,8 +3,8 @@ import { CssBaseline, ThemeProvider } from '@mui/material';
 import './App.css'
 import Header from './components/Header'
 import SubHeader from './components/SubHeader';
-import DarkTheme from './theme/darkTheme';
-import LightTheme from './theme/lightTheme';
+import DarkTheme from './theme/DarkTheme';
+import LightTheme from './theme/LightTheme';
 
 export default function App() {
 
