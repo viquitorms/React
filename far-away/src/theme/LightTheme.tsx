@@ -1,9 +1,9 @@
 import { createTheme } from "@mui/material/styles";
 
-const lightTheme = createTheme({
+const LightTheme = createTheme({
   palette: {
     mode: "light",
-    primary: { main: "#ff6f61" }, // Cor personalizada para o tema claro
+    primary: { main: "#ff6f61" },
     secondary: { main: "#6b5b95" },
     background: { default: "#f5f5f5", paper: "#ffffff" },
   },
@@ -16,4 +16,4 @@ const lightTheme = createTheme({
   },
 });
 
-export default lightTheme;
+export default LightTheme;
