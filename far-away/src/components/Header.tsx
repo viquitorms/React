@@ -11,11 +11,11 @@ function Header(props: IHeader) {
     return (
         <header className="header">
             <Box color='secondary'>
-                <Typography variant="h1" color='main'>
+                <Typography variant="h4" color='main'>
                     Far Away
                 </Typography>
-                <ThemeSlider isDarkMode={props.isDarkMode} toggleTheme={props.toggleTheme} />
             </Box>
+            <ThemeSlider isDarkMode={props.isDarkMode} toggleTheme={props.toggleTheme} />
         </header>
     );
 }
