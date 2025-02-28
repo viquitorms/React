@@ -9,7 +9,7 @@ interface IHeader {
 
 function Header(props: IHeader) {
     return (
-        <Box className="header" color={'darkblue'}>
+        <Box className="header" color={'dark'}>
             <Box>
                 <Typography variant="h4" color='primary.main'>
                     Far Away
