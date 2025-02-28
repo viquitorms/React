@@ -9,14 +9,14 @@ interface IHeader {
 
 function Header(props: IHeader) {
     return (
-        <header className="header">
-            <Box color='secondary'>
-                <Typography variant="h4" color='main'>
+        <Box className="header" color={'darkblue'}>
+            <Box>
+                <Typography variant="h4" color='primary.main'>
                     Far Away
                 </Typography>
             </Box>
             <ThemeSlider isDarkMode={props.isDarkMode} toggleTheme={props.toggleTheme} />
-        </header>
+        </Box>
     );
 }
 
