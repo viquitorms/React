@@ -5,6 +5,7 @@ import Header from './components/Header'
 import SubHeader from './components/SubHeader';
 import DarkTheme from './theme/DarkTheme';
 import LightTheme from './theme/LightTheme';
+import TripList from './components/TripList';
 
 export default function App() {
 
@@ -15,6 +16,7 @@ export default function App() {
       <CssBaseline />
       <Header isDarkMode={isDarkMode} toggleTheme={() => setIsDarkMode(!isDarkMode)} />
       <SubHeader />
+      <TripList />
     </ThemeProvider>
   );
 }
