@@ -4,17 +4,16 @@ import { Box, Button, TextField, Typography } from "@mui/material";
 function SubHeader() {
 
     return (
-        <Box className="header" sx={{ backgroundColor: 'primary.light', height: 80, justifyContent: 'center', gap: 2 }}>
-            <Typography variant="body1" color='primary.main' sx={{ fontWeight: 'Bold' }}>
+        <Box className="header" sx={{ height: 80, justifyContent: 'center', gap: 2 }}>
+            <Typography variant="body1" sx={{ fontWeight: 'Bold' }}>
                 What do you need for your trip?
             </Typography>
-            <Box display={'flex'} gap={2} color='white' sx={{ verticalAlign: "center" }}>
+            <Box display={'flex'} gap={2} sx={{ verticalAlign: "center" }}>
                 <Box>
                     <TextField
                         required
                         variant='filled'
                         label="Item"
-                        color="primary"
                     />
                 </Box>
 

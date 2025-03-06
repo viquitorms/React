@@ -1,21 +1,14 @@
 import '../assets/css/Header.css'
 import { Box, Typography } from "@mui/material";
-import ThemeSlider from '../theme/ThemeSlider';
 
-interface IHeader {
-    isDarkMode: boolean;
-    toggleTheme: () => void;
-}
-
-function Header(props: IHeader) {
+function Header() {
     return (
-        <Box className="header" color={'dark'}>
+        <Box className="header" >
             <Box>
-                <Typography variant="h4" color='primary.main'>
+                <Typography variant="h4" >
                     Far Away
                 </Typography>
             </Box>
-            <ThemeSlider isDarkMode={props.isDarkMode} toggleTheme={props.toggleTheme} />
         </Box>
     );
 }
