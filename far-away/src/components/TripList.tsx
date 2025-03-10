@@ -1,7 +1,6 @@
-import { Box, Chip, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import { Box, Button, Checkbox, Chip, FormControl, InputLabel, MenuItem, Select, Typography } from "@mui/material";
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import { CheckBox } from "@mui/icons-material";
 
 export default function TripList() {
 
@@ -18,16 +17,23 @@ export default function TripList() {
         <Box sx={{
             display: "flex",
             flexDirection: "column",
+            gap: 2,
             justifyContent: "space-between",
-            height: "35rem",
             padding: 5
-        }}>
-            <Box display={"flex"} flexDirection={"row"} gap={2} flexWrap={"wrap"} height={10}>
-                {
-                    array.map(value =>
-                        <Chip sx={{ backgroundColor: "cadetblue", color: "white" }} label={value} icon={<HighlightOffIcon color="white" />} />
-                    )
-                }
+        }}
+        >
+            <Box>
+                <Box display={"flex"} gap={2} flexWrap={"wrap"}>
+                    {
+                        array.map(value =>
+                            <Box bgcolor={"lightgray"} py={1} px={2} borderRadius={2} display={"flex"} gap={1} alignItems={"center"}>
+                                <Checkbox />
+                                {value}
+                                <HighlightOffIcon />
+                            </Box>
+                        )
+                    }
+                </Box>
             </Box>
             <Box>
                 <Box sx={{ display: "flex", gap: 2 }}>
@@ -51,11 +57,9 @@ export default function TripList() {
                                 variant="filled"
                                 label="Sort list">
                                 <MenuItem value={0}>
-                                    <KeyboardArrowUpIcon />
                                     <span>Ascending</span>
                                 </MenuItem>
                                 <MenuItem value={1}>
-                                    <KeyboardArrowDownIcon />
                                     <span>Descending</span>
                                 </MenuItem>
                             </Select>
