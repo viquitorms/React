@@ -1,7 +1,10 @@
 import '../assets/css/Header.css'
 import { Box, Button, TextField, Typography } from "@mui/material";
+import { useAddItem } from '../data/TripContext';
 
 function SubHeader() {
+
+    const { addItem } = useAddItem();
 
     return (
         <Box className="header" sx={{ height: 80, justifyContent: 'center', gap: 2 }}>

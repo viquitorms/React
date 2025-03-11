@@ -1,17 +1,15 @@
-import { Box, Button, Checkbox, Chip, FormControl, InputLabel, MenuItem, Select, Typography } from "@mui/material";
+import { Box, Checkbox, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
-import { CheckBox } from "@mui/icons-material";
+import { useState } from "react";
+
+interface ITripList {
+    name: string,
+    quantity: number
+}
 
 export default function TripList() {
 
-    var array = [
-        'Toalha', 'Protetor solar', 'Óculos de sol', 'Biquíni', 'Shorts', 'Chapéu', 'Guarda-sol', 'Cadeira de praia',
-        'Sunga', 'Cooler', 'Snacks', 'Livro', 'Fone de ouvido', 'Pipa', 'Canga', 'Bolsa de praia', 'Creme pós-sol',
-        'Chinelo', 'Bola de futebol', 'Prancha de surfe', 'Sandália', 'Kit de mergulho', 'Câmera fotográfica', 'Caiaque',
-        'Bolsa térmica', 'Manta de picnic', 'Protetor labial', 'Escova de cabelo', 'Repelente', 'Kit de primeiros socorros',
-        'Cabo de carregador', 'Funda de celular', 'Água de coco', 'Luva de mergulho', 'Roupão de banho', 'Lanterna', 'Garrafa de água'
-    ];
-
+    const [tripList, setTripList] = useState<ITripList[]>([]);
 
     return (
         <Box sx={{
@@ -25,10 +23,10 @@ export default function TripList() {
             <Box>
                 <Box display={"flex"} gap={2} flexWrap={"wrap"}>
                     {
-                        array.map(value =>
+                        tripList.map(value =>
                             <Box bgcolor={"lightgray"} py={1} px={2} borderRadius={2} display={"flex"} gap={1} alignItems={"center"}>
                                 <Checkbox />
-                                {value}
+                                {value.name}
                                 <HighlightOffIcon />
                             </Box>
                         )
