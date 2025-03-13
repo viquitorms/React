@@ -1,6 +1,7 @@
 import { Box, Checkbox, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { useState } from "react";
+import { useAddItem } from "../data/TripContext";
 
 interface ITripList {
     name: string,
@@ -9,7 +10,7 @@ interface ITripList {
 
 export default function TripList() {
 
-    const [tripList, setTripList] = useState<ITripList[]>([]);
+    const { tripList } = useAddItem();
 
     return (
         <Box sx={{
@@ -26,7 +27,7 @@ export default function TripList() {
                         tripList.map(value =>
                             <Box bgcolor={"lightgray"} py={1} px={2} borderRadius={2} display={"flex"} gap={1} alignItems={"center"}>
                                 <Checkbox />
-                                {value.name}
+                                {value.name} - {value.quantity}
                                 <HighlightOffIcon />
                             </Box>
                         )
