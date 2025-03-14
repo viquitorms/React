@@ -1,6 +1,10 @@
 import { Box, Container, Typography } from "@mui/material";
+import { useTrip } from "../data/TripContext";
 
 export default function Footer() {
+
+    const { tripList } = useTrip();
+
     return (
         <Box
             component="footer"
@@ -16,7 +20,7 @@ export default function Footer() {
         >
             <Container>
                 <Typography variant="body2">
-                    You have 0 items in your list and you already packed 0 (0%)
+                    You have {tripList.length} items in your list and you already packed {tripList.filter(x => x.checked).length} (0%)
                 </Typography>
             </Container>
         </Box>

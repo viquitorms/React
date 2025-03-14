@@ -1,20 +1,21 @@
 import '../assets/css/Header.css'
 import { Box, Button, TextField, Typography } from "@mui/material";
-import { useAddItem } from '../data/TripContext';
+import { useTrip } from '../data/TripContext';
 import { useState } from 'react';
 
 function SubHeader() {
 
-    const { addItem } = useAddItem();
+    const { addItem } = useTrip();
     const [name, setName] = useState("");
     const [quantity, setQuantity] = useState(0);
+    const [checked, setChecked] = useState(false);
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
         if (!name.trim()) return;
 
-        addItem({ name, quantity });
+        addItem({ name, quantity, checked });
         setName("");
         setQuantity(0);
     }

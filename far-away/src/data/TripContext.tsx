@@ -3,6 +3,7 @@ import { createContext, ReactNode, useContext, useState } from "react";
 interface ITripItem {
     name: string;
     quantity: number;
+    checked: boolean;
 }
 
 interface ITripContext {
@@ -19,6 +20,7 @@ export function TripProvider({ children }: { children: ReactNode }) {
         setTripList((previousItems) => [...previousItems, item])
     };
 
+
     return (
         <TripContext.Provider value={{ tripList, addItem }}>
             {children}
@@ -26,7 +28,7 @@ export function TripProvider({ children }: { children: ReactNode }) {
     )
 }
 
-export function useAddItem() {
+export function useTrip() {
     const context = useContext(TripContext);
     if (!context) {
         throw new Error("Erro ao utilizar useItem");
