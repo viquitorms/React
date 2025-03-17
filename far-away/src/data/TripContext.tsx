@@ -9,6 +9,7 @@ interface ITripItem {
 interface ITripContext {
     tripList: ITripItem[];
     addItem: (item: ITripItem) => void;
+    toogleChecked: (name: string) => void;
 }
 
 const TripContext = createContext<ITripContext | undefined>(undefined);
@@ -20,9 +21,16 @@ export function TripProvider({ children }: { children: ReactNode }) {
         setTripList((previousItems) => [...previousItems, item])
     };
 
+    const toogleChecked = (name: string) => {
+        setTripList((prev) =>
+            prev.map((item) =>
+                item.name === name ? { ...item, checked: !item.checked } : item
+            )
+        )
+    }
 
     return (
-        <TripContext.Provider value={{ tripList, addItem }}>
+        <TripContext.Provider value={{ tripList, addItem, toogleChecked }}>
             {children}
         </TripContext.Provider>
     )
