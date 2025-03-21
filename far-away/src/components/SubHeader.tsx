@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 function SubHeader() {
 
-    const { addItem } = useTrip();
+    const { tripList, addItem } = useTrip();
     const [name, setName] = useState("");
     const [quantity, setQuantity] = useState(0);
     const [checked, setChecked] = useState(false);
@@ -13,11 +13,30 @@ function SubHeader() {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
 
-        if (!name.trim()) return;
+        if (handleSubmitedContent()) {
+            addItem({ name, quantity, checked });
+            setName("");
+            setQuantity(0);
+        }
+    }
 
-        addItem({ name, quantity, checked });
-        setName("");
-        setQuantity(0);
+    const handleSubmitedContent = () => {
+        if (!name.trim()) {
+            alert("O item não pode fica vazio!");
+            return false;
+        }
+
+        if (tripList.some(item => item.name.toUpperCase() === name.toUpperCase())) {
+            alert(`O item [${name.toUpperCase()}] já existe na lista. Por isso, a quantidade digitada será acrescida no item já existente`);
+            return false;
+        }
+
+        if (quantity === 0) {
+            alert("O valor não pode ser 0.");
+            return false;
+        }
+
+        return true;
     }
 
     return (
@@ -42,6 +61,7 @@ function SubHeader() {
                         variant='filled'
                         label="Quantity"
                         value={quantity}
+                        type='number'
                         onChange={(e) => setQuantity(Number(e.target.value))}
                     />
                 </Box>

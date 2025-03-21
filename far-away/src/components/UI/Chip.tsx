@@ -18,16 +18,33 @@ export default function Chip(props: IChip) {
 
     return (
         <>
-            <Box bgcolor={"gainsboro"} py={1} px={2} borderRadius={2} display={"flex"} gap={1} alignItems={"center"}>
-                <Box sx={{ cursor: "pointer" }}>
+            <Box bgcolor={"gainsboro"} p={1} borderRadius={2} display={"flex"} gap={1} alignItems={"center"}>
+                <Box display={'flex'} gap={2}>
                     <Checkbox value={props.checked} onChange={() => handleChipClick(props.name)} />
-                    <Typography>
-                        {props.name} - {props.quantity}
-                    </Typography>
+                    <Box>
+                        <Box display={"flex"}>
+                            <Typography fontWeight={"Bold"}>
+                                Item:
+                            </Typography>
+                            <Typography ml={1}>
+                                {props.name}
+                            </Typography>
+                        </Box>
+                        <Box display={"flex"}>
+                            <Typography fontWeight={"Bold"}>
+                                Quantity:
+                            </Typography>
+                            <Typography ml={1}>
+                                {props.quantity}
+                            </Typography>
+                        </Box>
+                    </Box>
                 </Box>
-                <Button>
-                    <HighlightOffIcon />
-                </Button>
+                <Box>
+                    <Button>
+                        <HighlightOffIcon />
+                    </Button>
+                </Box>
             </Box>
 
         </>
