@@ -1,7 +1,7 @@
 import '../assets/css/Header.css'
 import { Box, Button, TextField, Typography } from "@mui/material";
 import { useTrip } from '../data/TripContext';
-import { useState } from 'react';
+import { HtmlHTMLAttributes, useEffect, useRef, useState } from 'react';
 
 function SubHeader() {
 
@@ -9,6 +9,9 @@ function SubHeader() {
     const [name, setName] = useState("");
     const [quantity, setQuantity] = useState(0);
     const [checked, setChecked] = useState(false);
+
+    const textFieldName = useRef<HTMLInputElement>(null);
+    const textFieldQuantity = useRef<HTMLInputElement>(null);
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -23,16 +26,19 @@ function SubHeader() {
     const handleSubmitedContent = () => {
         if (!name.trim()) {
             alert("O item não pode fica vazio!");
+            textFieldName.current?.focus();
             return false;
         }
 
         if (tripList.some(item => item.name.toUpperCase() === name.toUpperCase())) {
-            alert(`O item [${name.toUpperCase()}] já existe na lista. Por isso, a quantidade digitada será acrescida no item já existente`);
+            alert(`O item [${name.toUpperCase()}] já existe na lista.`);
+            textFieldName.current?.focus();
             return false;
         }
 
         if (quantity === 0) {
             alert("O valor não pode ser 0.");
+            textFieldQuantity.current?.focus();
             return false;
         }
 
@@ -47,6 +53,7 @@ function SubHeader() {
             <Box display={'flex'} gap={2} sx={{ verticalAlign: "center" }}>
                 <Box>
                     <TextField
+                        ref={textFieldName}
                         required
                         variant='filled'
                         label="Item"
@@ -57,6 +64,7 @@ function SubHeader() {
 
                 <Box>
                     <TextField
+                        ref={textFieldQuantity}
                         required
                         variant='filled'
                         label="Quantity"

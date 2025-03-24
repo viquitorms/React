@@ -7,7 +7,6 @@ export default function Footer() {
 
     function GetPackagePercent() {
         var percent = (tripList.filter(x => x.checked).length / tripList.length) * 100;
-
         return percent;
     }
 
