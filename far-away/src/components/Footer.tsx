@@ -6,8 +6,13 @@ export default function Footer() {
     const { tripList } = useTrip();
 
     function GetPackagePercent() {
-        var percent = (tripList.filter(x => x.checked).length / tripList.length) * 100;
-        return percent;
+        if (tripList.length == 0) {
+            return 0;
+        }
+        else {
+            var percent = (tripList.filter(x => x.checked).length / tripList.length) * 100;
+            return parseFloat(percent.toFixed(2));
+        }
     }
 
     return (

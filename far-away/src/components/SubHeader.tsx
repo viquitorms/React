@@ -1,5 +1,5 @@
 import '../assets/css/Header.css'
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { Box, Button, FormControl, InputLabel, MenuItem, Select, TextField, Typography } from "@mui/material";
 import { useTrip } from '../data/TripContext';
 import { HtmlHTMLAttributes, useEffect, useRef, useState } from 'react';
 
@@ -46,38 +46,74 @@ function SubHeader() {
     }
 
     return (
-        <Box className="header" sx={{ height: 80, justifyContent: 'center', gap: 2 }}>
-            <Typography variant="body1" sx={{ fontWeight: 'Bold' }}>
-                What do you need for your trip?
-            </Typography>
-            <Box display={'flex'} gap={2} sx={{ verticalAlign: "center" }}>
-                <Box>
-                    <TextField
-                        ref={textFieldName}
-                        required
-                        variant='filled'
-                        label="Item"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                    />
-                </Box>
+        <Box className="header" display={'flex'} justifyContent={"space-between"}>
 
+            <Box>
                 <Box>
-                    <TextField
-                        ref={textFieldQuantity}
-                        required
-                        variant='filled'
-                        label="Quantity"
-                        value={quantity}
-                        type='number'
-                        onChange={(e) => setQuantity(Number(e.target.value))}
-                    />
+                    <Typography variant="body1" sx={{ fontWeight: 'Bold' }}>
+                        What do you need for your trip?
+                    </Typography>
                 </Box>
+                <Box display={'flex'} gap={2}>
+                    <Box>
+                        <TextField
+                            ref={textFieldName}
+                            required
+                            variant='filled'
+                            label="Item"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                        />
+                    </Box>
 
-                <Box alignContent="center">
-                    <Button variant="contained" sx={{ paddingX: 4, paddingY: 2 }} onClick={handleSubmit}>
-                        Add
-                    </Button>
+                    <Box>
+                        <TextField
+                            ref={textFieldQuantity}
+                            required
+                            variant='filled'
+                            label="Quantity"
+                            value={quantity}
+                            type='number'
+                            onChange={(e) => setQuantity(Number(e.target.value))}
+                        />
+                    </Box>
+
+                    <Box alignContent="center">
+                        <Button variant="contained" sx={{ paddingX: 4, paddingY: 2 }} onClick={handleSubmit}>
+                            Add
+                        </Button>
+                    </Box>
+                </Box>
+            </Box>
+
+            <Box display={"flex"} gap={2} flexDirection={'row'}>
+                <Box width={300}>
+                    <FormControl fullWidth>
+                        <InputLabel id="select-sortBy">Sort by</InputLabel>
+                        <Select fullWidth
+                            labelId="select-sortBy"
+                            variant="filled"
+                            label="Sort list">
+                            <MenuItem value={0}>Quantity</MenuItem>
+                            <MenuItem value={1}>Item</MenuItem>
+                        </Select>
+                    </FormControl>
+                </Box>
+                <Box width={200}>
+                    <FormControl fullWidth>
+                        <InputLabel id="select-direction">Direction</InputLabel>
+                        <Select fullWidth
+                            labelId="select-direction"
+                            variant="filled"
+                            label="Sort list">
+                            <MenuItem value={0}>
+                                <span>Ascending</span>
+                            </MenuItem>
+                            <MenuItem value={1}>
+                                <span>Descending</span>
+                            </MenuItem>
+                        </Select>
+                    </FormControl>
                 </Box>
             </Box>
         </Box>
