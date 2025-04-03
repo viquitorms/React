@@ -10,6 +10,9 @@ function SubHeader() {
     const [quantity, setQuantity] = useState(0);
     const [checked, setChecked] = useState(false);
 
+    const [sortBy, setSortBy] = useState(0);
+    const [sortDirection, setSortDirection] = useState(0);
+
     const textFieldName = useRef<HTMLInputElement>(null);
     const textFieldQuantity = useRef<HTMLInputElement>(null);
 
@@ -46,8 +49,7 @@ function SubHeader() {
     }
 
     return (
-        <Box className="header" display={'flex'} justifyContent={"space-between"}>
-
+        <Box display={'flex'} justifyContent={"space-between"}>
             <Box>
                 <Box>
                     <Typography variant="body1" sx={{ fontWeight: 'Bold' }}>
@@ -86,34 +88,41 @@ function SubHeader() {
                 </Box>
             </Box>
 
-            <Box display={"flex"} gap={2} flexDirection={'row'}>
-                <Box width={300}>
-                    <FormControl fullWidth>
-                        <InputLabel id="select-sortBy">Sort by</InputLabel>
-                        <Select fullWidth
-                            labelId="select-sortBy"
-                            variant="filled"
-                            label="Sort list">
-                            <MenuItem value={0}>Quantity</MenuItem>
-                            <MenuItem value={1}>Item</MenuItem>
-                        </Select>
-                    </FormControl>
-                </Box>
-                <Box width={200}>
-                    <FormControl fullWidth>
-                        <InputLabel id="select-direction">Direction</InputLabel>
-                        <Select fullWidth
-                            labelId="select-direction"
-                            variant="filled"
-                            label="Sort list">
-                            <MenuItem value={0}>
-                                <span>Ascending</span>
-                            </MenuItem>
-                            <MenuItem value={1}>
-                                <span>Descending</span>
-                            </MenuItem>
-                        </Select>
-                    </FormControl>
+            <Box display={'flex'} flexDirection={'column'} alignSelf={'end'}>
+                <Box display={"flex"} gap={2}>
+                    <Box width={300}>
+                        <FormControl fullWidth>
+                            <InputLabel id="select-sortBy">Sort by</InputLabel>
+                            <Select
+                                fullWidth
+                                labelId="select-sortBy"
+                                variant="filled"
+                                label="Sort list"
+                                value={sortBy}
+                                onChange={(e) => setSortBy(Number(e.target.value))}>
+                                <MenuItem value={0}>Quantity</MenuItem>
+                                <MenuItem value={1}>Item</MenuItem>
+                            </Select>
+                        </FormControl>
+                    </Box>
+                    <Box width={200}>
+                        <FormControl fullWidth>
+                            <InputLabel id="select-direction">Direction</InputLabel>
+                            <Select fullWidth
+                                labelId="select-direction"
+                                variant="filled"
+                                label="Sort list"
+                                value={sortDirection}
+                                onChange={(e) => setSortDirection(Number(e.target.value))}>
+                                <MenuItem value={0}>
+                                    <span>Ascending</span>
+                                </MenuItem>
+                                <MenuItem value={1}>
+                                    <span>Descending</span>
+                                </MenuItem>
+                            </Select>
+                        </FormControl>
+                    </Box>
                 </Box>
             </Box>
         </Box>
