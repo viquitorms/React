@@ -34,6 +34,14 @@ export function TripProvider({ children }: { children: ReactNode }) {
         setTripList(prevList => prevList.filter(item => item.name !== name));
     }
 
+    // function sortTripList(sortBy: number, sortSirection: number) {
+    //     setTripList(prev => {
+    //         const sortedList = [...prev].sort(a, b) => {
+    //             if (sortBy)
+    //         }
+    //     })
+    // }
+
     return (
         <TripContext.Provider value={{ tripList, addItem, toogleChecked, removeItem }}>
             {children}

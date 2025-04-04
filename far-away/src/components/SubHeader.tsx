@@ -1,5 +1,5 @@
 import '../assets/css/Header.css'
-import { Box, Button, FormControl, InputLabel, MenuItem, Select, TextField, Typography } from "@mui/material";
+import { Box, Button, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent, TextField, Typography } from "@mui/material";
 import { useTrip } from '../data/TripContext';
 import { HtmlHTMLAttributes, useEffect, useRef, useState } from 'react';
 
@@ -48,6 +48,26 @@ function SubHeader() {
         return true;
     }
 
+    const handleSortBy = (event: SelectChangeEvent<number>) => {
+        setSortBy(Number(event.target.value));
+    };
+
+    const handleSortDirection = (event: SelectChangeEvent<number>) => {
+        setSortDirection(Number(event.target.value));
+    };
+
+    function sortList(sortBy: number, sortDirection: number) {
+        const sortedList = [...tripList].sort((a, b) => {
+            if (sortBy === 0) {
+                // Ordenação por quantidade
+                return sortDirection === 0 ? a.quantity - b.quantity : b.quantity - a.quantity;
+            } else {
+                // Ordenação por nome
+                return sortDirection === 0 ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name);
+            }
+        });
+    }
+
     return (
         <Box display={'flex'} justifyContent={"space-between"}>
             <Box>
@@ -88,41 +108,36 @@ function SubHeader() {
                 </Box>
             </Box>
 
-            <Box display={'flex'} flexDirection={'column'} alignSelf={'end'}>
-                <Box display={"flex"} gap={2}>
-                    <Box width={300}>
-                        <FormControl fullWidth>
-                            <InputLabel id="select-sortBy">Sort by</InputLabel>
-                            <Select
-                                fullWidth
-                                labelId="select-sortBy"
-                                variant="filled"
-                                label="Sort list"
-                                value={sortBy}
-                                onChange={(e) => setSortBy(Number(e.target.value))}>
-                                <MenuItem value={0}>Quantity</MenuItem>
-                                <MenuItem value={1}>Item</MenuItem>
-                            </Select>
-                        </FormControl>
-                    </Box>
-                    <Box width={200}>
-                        <FormControl fullWidth>
-                            <InputLabel id="select-direction">Direction</InputLabel>
-                            <Select fullWidth
-                                labelId="select-direction"
-                                variant="filled"
-                                label="Sort list"
-                                value={sortDirection}
-                                onChange={(e) => setSortDirection(Number(e.target.value))}>
-                                <MenuItem value={0}>
-                                    <span>Ascending</span>
-                                </MenuItem>
-                                <MenuItem value={1}>
-                                    <span>Descending</span>
-                                </MenuItem>
-                            </Select>
-                        </FormControl>
-                    </Box>
+            <Box display={"flex"} gap={2}>
+                <Box width={300}>
+                    <FormControl fullWidth>
+                        <InputLabel id="select-sortBy">Sort by</InputLabel>
+                        <Select
+                            fullWidth
+                            labelId="select-sortBy"
+                            variant="filled"
+                            value={sortBy}
+                            onChange={handleSortBy}
+                        >
+                            <MenuItem value={0}>Quantity</MenuItem>
+                            <MenuItem value={1}>Item</MenuItem>
+                        </Select>
+                    </FormControl>
+                </Box>
+                <Box width={200}>
+                    <FormControl fullWidth>
+                        <InputLabel id="select-direction">Direction</InputLabel>
+                        <Select
+                            fullWidth
+                            labelId="select-direction"
+                            variant="filled"
+                            value={sortDirection}
+                            onChange={handleSortDirection}
+                        >
+                            <MenuItem value={0}>Ascending</MenuItem>
+                            <MenuItem value={1}>Descending</MenuItem>
+                        </Select>
+                    </FormControl>
                 </Box>
             </Box>
         </Box>
