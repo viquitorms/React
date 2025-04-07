@@ -1,20 +1,17 @@
 import '../assets/css/Header.css'
-import { Box, Button, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent, TextField, Typography } from "@mui/material";
+import { Box, Button, FormControl, InputLabel, MenuItem, Select, TextField, Typography } from "@mui/material";
 import { useTrip } from '../data/TripContext';
-import { HtmlHTMLAttributes, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 function SubHeader() {
 
-    const { tripList, addItem } = useTrip();
+    const { tripList, addItem, sortList } = useTrip();
     const [name, setName] = useState("");
     const [quantity, setQuantity] = useState(0);
     const [checked, setChecked] = useState(false);
 
     const [sortBy, setSortBy] = useState(0);
     const [sortDirection, setSortDirection] = useState(0);
-
-    const textFieldName = useRef<HTMLInputElement>(null);
-    const textFieldQuantity = useRef<HTMLInputElement>(null);
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
@@ -29,44 +26,25 @@ function SubHeader() {
     const handleSubmitedContent = () => {
         if (!name.trim()) {
             alert("O item não pode fica vazio!");
-            textFieldName.current?.focus();
             return false;
         }
 
         if (tripList.some(item => item.name.toUpperCase() === name.toUpperCase())) {
             alert(`O item [${name.toUpperCase()}] já existe na lista.`);
-            textFieldName.current?.focus();
             return false;
         }
 
         if (quantity === 0) {
             alert("O valor não pode ser 0.");
-            textFieldQuantity.current?.focus();
             return false;
         }
 
         return true;
     }
 
-    const handleSortBy = (event: SelectChangeEvent<number>) => {
-        setSortBy(Number(event.target.value));
-    };
-
-    const handleSortDirection = (event: SelectChangeEvent<number>) => {
-        setSortDirection(Number(event.target.value));
-    };
-
-    function sortList(sortBy: number, sortDirection: number) {
-        const sortedList = [...tripList].sort((a, b) => {
-            if (sortBy === 0) {
-                // Ordenação por quantidade
-                return sortDirection === 0 ? a.quantity - b.quantity : b.quantity - a.quantity;
-            } else {
-                // Ordenação por nome
-                return sortDirection === 0 ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name);
-            }
-        });
-    }
+    useEffect(() => {
+        sortList(sortBy, sortDirection);
+    }, [sortBy, sortDirection]);
 
     return (
         <Box display={'flex'} justifyContent={"space-between"}>
@@ -79,7 +57,6 @@ function SubHeader() {
                 <Box display={'flex'} gap={2}>
                     <Box>
                         <TextField
-                            ref={textFieldName}
                             required
                             variant='filled'
                             label="Item"
@@ -90,7 +67,6 @@ function SubHeader() {
 
                     <Box>
                         <TextField
-                            ref={textFieldQuantity}
                             required
                             variant='filled'
                             label="Quantity"
@@ -117,7 +93,11 @@ function SubHeader() {
                             labelId="select-sortBy"
                             variant="filled"
                             value={sortBy}
-                            onChange={handleSortBy}
+                            onChange={(e) => {
+                                const value = Number(e.target.value);
+                                setSortBy(value);         // atualiza o estado local
+                                sortList(value, sortDirection); // chama a função do contexto com os valores corretos
+                            }}
                         >
                             <MenuItem value={0}>Quantity</MenuItem>
                             <MenuItem value={1}>Item</MenuItem>
@@ -132,7 +112,11 @@ function SubHeader() {
                             labelId="select-direction"
                             variant="filled"
                             value={sortDirection}
-                            onChange={handleSortDirection}
+                            onChange={(e) => {
+                                const value = Number(e.target.value);
+                                setSortDirection(value);         // atualiza o estado local
+                                sortList(sortBy, value);         // ordena com a nova direção
+                            }}
                         >
                             <MenuItem value={0}>Ascending</MenuItem>
                             <MenuItem value={1}>Descending</MenuItem>
