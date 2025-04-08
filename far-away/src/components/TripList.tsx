@@ -1,4 +1,4 @@
-import { Box, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import { Box } from "@mui/material";
 import { useTrip } from "../data/TripContext";
 import Chip from "./UI/Chip";
 

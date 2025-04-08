@@ -50,7 +50,7 @@ function SubHeader() {
         <Box display={'flex'} justifyContent={"space-between"}>
             <Box>
                 <Box>
-                    <Typography variant="body1" sx={{ fontWeight: 'Bold' }}>
+                    <Typography variant="body1" sx={{ fontWeight: 'Bold' }} color='white'>
                         What do you need for your trip?
                     </Typography>
                 </Box>
@@ -77,14 +77,14 @@ function SubHeader() {
                     </Box>
 
                     <Box alignContent="center">
-                        <Button variant="contained" sx={{ paddingX: 4, paddingY: 2 }} onClick={handleSubmit}>
+                        <Button variant="contained" sx={{ paddingX: 4, paddingY: 2, background: 'purple' }} onClick={handleSubmit}>
                             Add
                         </Button>
                     </Box>
                 </Box>
             </Box>
 
-            <Box display={"flex"} gap={2}>
+            <Box display={"flex"} gap={2} alignSelf={'end'}>
                 <Box width={300}>
                     <FormControl fullWidth>
                         <InputLabel id="select-sortBy">Sort by</InputLabel>

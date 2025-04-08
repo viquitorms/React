@@ -12,7 +12,7 @@ export default function App() {
     <>
       <TripProvider>
         <Header />
-        <Box p={2}>
+        <Box p={2} sx={{ background: "darkorange" }}>
           <SubHeader />
           <TripList />
         </Box>

@@ -22,14 +22,14 @@ export default function Footer() {
                 position: "fixed",
                 bottom: 0,
                 width: "100%",
-                bgcolor: "primary.main",
                 color: "white",
                 py: 2,
                 textAlign: "center"
             }}
+            bgcolor={"darkorange"}
         >
             <Container>
-                <Typography variant="body2">
+                <Typography variant="body1" fontWeight={'bold'} sx={{ color: "purple" }}>
                     You have {tripList.length} items in your list and you already packed {tripList.filter(x => x.checked).length} ({GetPackagePercent()}%)
                 </Typography>
             </Container>
