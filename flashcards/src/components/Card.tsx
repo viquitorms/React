@@ -1,14 +1,28 @@
-import { data } from "../data/Cards"
+import { useState } from "react";
 
-export default function Cards() {
-    return (
-        <div className="flex gap-2">
-            {data.map(x => (
-                <div className="bg-gray-200 p-10 rounded-3xl">
-                    {x.question}
-                </div>
+interface ICard {
+    id: number,
+    question: string,
+    answer: string,
+    isSelected: boolean
+}
 
-            ))}
-        </div>
-    )
+export default function Card(props: ICard) {
+
+    const [selectedCardId, setSelectedCardId] = useState(0);
+
+    if (props.isSelected && props.id == selectedCardId) {
+        return (
+            <div className="bg-red-300 p-4 cursor-pointer">
+                <p className="text-md">{props.question}</p>
+            </div>
+        );
+    }
+    else {
+        return (
+            <div className="bg-gray-300 p-4 cursor-pointer">
+                <p className="text-md">{props.question}</p>
+            </div>
+        );
+    }
 }
