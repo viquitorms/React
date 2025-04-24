@@ -8,8 +8,7 @@
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
     --color-red-300: oklch(80.8% 0.114 19.571);
-    --color-red-600: oklch(57.7% 0.245 27.325);
-    --color-gray-200: oklch(92.8% 0.006 264.531);
+    --color-green-300: oklch(87.1% 0.15 154.449);
     --color-gray-300: oklch(87.2% 0.01 258.338);
     --spacing: 0.25rem;
     --container-3xs: 16rem;
@@ -18,7 +17,6 @@
     --text-xl--line-height: calc(1.75 / 1.25);
     --text-2xl: 1.5rem;
     --text-2xl--line-height: calc(2 / 1.5);
-    --radius-3xl: 1.5rem;
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
   }
@@ -169,26 +167,8 @@
   }
 }
 @layer utilities {
-  .flex {
-    display: flex;
-  }
-  .grid {
-    display: grid;
-  }
   .table {
     display: table;
-  }
-  .aspect-square {
-    aspect-ratio: 1 / 1;
-  }
-  .h-fit {
-    height: fit-content;
-  }
-  .w-16 {
-    width: calc(var(--spacing) * 16);
-  }
-  .w-fit {
-    width: fit-content;
   }
   .w-full {
     width: 100%;
@@ -202,23 +182,8 @@
   .resize {
     resize: both;
   }
-  .grid-cols-4 {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-  .flex-wrap {
-    flex-wrap: wrap;
-  }
-  .gap-2 {
-    gap: calc(var(--spacing) * 2);
-  }
   .gap-4 {
     gap: calc(var(--spacing) * 4);
-  }
-  .gap-5 {
-    gap: calc(var(--spacing) * 5);
-  }
-  .gap-8 {
-    gap: calc(var(--spacing) * 8);
   }
   .border {
     border-style: var(--tw-border-style);
@@ -227,22 +192,14 @@
   .bg-gray-300 {
     background-color: var(--color-gray-300);
   }
+  .bg-green-300 {
+    background-color: var(--color-green-300);
+  }
   .bg-red-300 {
     background-color: var(--color-red-300);
   }
-  .p-2 {
-    padding: calc(var(--spacing) * 2);
-  }
   .p-4 {
     padding: calc(var(--spacing) * 4);
-  }
-  .text-2xl {
-    font-size: var(--text-2xl);
-    line-height: var(--tw-leading, var(--text-2xl--line-height));
-  }
-  .text-xl {
-    font-size: var(--text-xl);
-    line-height: var(--tw-leading, var(--text-xl--line-height));
   }
   .underline {
     text-decoration-line: underline;
@@ -251,94 +208,14 @@
     outline-style: var(--tw-outline-style);
     outline-width: 1px;
   }
-  .sm\:flex {
-    @media (width >= 40rem) {
-      display: flex;
-    }
-  }
-  .md\:flex {
-    @media (width >= 48rem) {
-      display: flex;
-    }
-  }
   .md\:grid {
     @media (width >= 48rem) {
       display: grid;
     }
   }
-  .md\:w-32 {
-    @media (width >= 48rem) {
-      width: calc(var(--spacing) * 32);
-    }
-  }
-  .md\:w-48 {
-    @media (width >= 48rem) {
-      width: calc(var(--spacing) * 48);
-    }
-  }
-  .md\:columns-1 {
-    @media (width >= 48rem) {
-      columns: 1;
-    }
-  }
-  .md\:columns-2 {
-    @media (width >= 48rem) {
-      columns: 2;
-    }
-  }
-  .md\:columns-3 {
-    @media (width >= 48rem) {
-      columns: 3;
-    }
-  }
-  .md\:columns-3xs {
-    @media (width >= 48rem) {
-      columns: var(--container-3xs);
-    }
-  }
-  .md\:columns-4 {
-    @media (width >= 48rem) {
-      columns: 4;
-    }
-  }
-  .md\:columns-6 {
-    @media (width >= 48rem) {
-      columns: 6;
-    }
-  }
-  .md\:columns-6xl {
-    @media (width >= 48rem) {
-      columns: var(--container-6xl);
-    }
-  }
-  .md\:auto-cols-auto {
-    @media (width >= 48rem) {
-      grid-auto-columns: auto;
-    }
-  }
-  .md\:grid-flow-col {
-    @media (width >= 48rem) {
-      grid-auto-flow: column;
-    }
-  }
   .md\:grid-cols-3 {
     @media (width >= 48rem) {
       grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-  }
-  .md\:flex-wrap {
-    @media (width >= 48rem) {
-      flex-wrap: wrap;
-    }
-  }
-  .md\:justify-between {
-    @media (width >= 48rem) {
-      justify-content: space-between;
-    }
-  }
-  .lg\:w-48 {
-    @media (width >= 64rem) {
-      width: calc(var(--spacing) * 48);
     }
   }
 }

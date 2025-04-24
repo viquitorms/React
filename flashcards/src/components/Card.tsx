@@ -1,28 +1,20 @@
-import { useState } from "react";
+import { MouseEventHandler } from "react";
 
 interface ICard {
     id: number,
     question: string,
     answer: string,
-    isSelected: boolean
+    onClick: MouseEventHandler<HTMLDivElement>,
+    selected: boolean
 }
 
 export default function Card(props: ICard) {
-
-    const [selectedCardId, setSelectedCardId] = useState(0);
-
-    if (props.isSelected && props.id == selectedCardId) {
-        return (
-            <div className="bg-red-300 p-4 cursor-pointer">
-                <p className="text-md">{props.question}</p>
-            </div>
-        );
-    }
-    else {
-        return (
-            <div className="bg-gray-300 p-4 cursor-pointer">
-                <p className="text-md">{props.question}</p>
-            </div>
-        );
-    }
+    return (
+        <div
+            className={`${props.selected ? 'bg-green-300' : 'bg-gray-300'} p-4 cursor-pointer`}
+            onClick={props.onClick}
+        >
+            <p className="text-md">{props.selected ? props.answer : props.question}</p>
+        </div>
+    );
 }
