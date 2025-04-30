@@ -1,3 +1,4 @@
+import { Box } from '@mui/material';
 import './App.css'
 import Footer from './components/Footer';
 import Header from './components/Header'
@@ -11,8 +12,10 @@ export default function App() {
     <>
       <TripProvider>
         <Header />
-        <SubHeader />
-        <TripList />
+        <Box p={2} sx={{ background: "darkorange" }}>
+          <SubHeader />
+          <TripList />
+        </Box>
         <Footer />
       </TripProvider>
     </>
