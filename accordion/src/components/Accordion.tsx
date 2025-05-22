@@ -1,18 +1,20 @@
-import { useState } from "react";
+import { SetStateAction, useState } from "react";
 import { IoIosArrowDropdown, IoIosArrowDropup } from "react-icons/io";
 
 interface IAccordion {
+    currentOpen: any,
+    onOpen: SetStateAction<any>
     number: number,
-    title: string;
-    text: string;
+    title: string,
+    children: any
 }
 
 export default function Accordion(props: IAccordion) {
 
-    const [isOpen, setIsOpen] = useState(false);
+    const isOpen = props.number === props.currentOpen;
 
     function handleToogle() {
-        setIsOpen((isOpen) => !isOpen)
+        props.onOpen(isOpen ? null : props.number)
     }
 
     return (
@@ -29,7 +31,7 @@ export default function Accordion(props: IAccordion) {
                     }
                 </div>
             </div>
-            {isOpen && <div className="p-4 bg-gray-100">{props.text}</div>}
+            {isOpen && <div className="p-4 bg-gray-100">{props.children}</div>}
         </div >
     );
 }
