@@ -1,5 +1,5 @@
 // src/components/Friends/useFriendsViewModel.ts
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import { friends as friendsData } from '../../data/Friends';
 import type { Friend } from '../../models/Friend.m';
 
@@ -10,7 +10,7 @@ function getBalanceStatus(friend: Friend): string {
 }
 
 export function useFriendsViewModel() {
-    const [friends] = useState(friendsData);
+    const [friends, setFriends] = useState(friendsData);
 
     const friendsWithStatus = useMemo(() => {
         return friends.map(friend => ({
@@ -19,8 +19,20 @@ export function useFriendsViewModel() {
         }));
     }, [friends]);
 
+    const addFriend = useCallback((newFriend: { name: string; image: string }) => {
+        const friendToAdd: Friend = {
+            id: Date.now(),
+            balance: 0,
+            name: newFriend.name,
+            image: newFriend.image
+        };
+
+        setFriends(currentFriends => [...currentFriends, friendToAdd]);
+    }, []);
+
     // O hook expõe apenas os dados prontos que a View precisa.
     return {
         friendsWithStatus,
+        addFriend
     };
 }

@@ -1,9 +1,12 @@
+import { Stack } from '@mui/material'
 import Friends from './pages/friends/Friends.v'
 
 function App() {
   return (
     <>
-      <Friends />
+      <Stack width={"30rem"}>
+        <Friends />
+      </Stack>
     </>
   )
 }
