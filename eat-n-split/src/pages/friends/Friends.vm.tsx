@@ -12,7 +12,7 @@ function getBalanceStatus(friend: Friend): string {
 export function useFriendsViewModel() {
     const [friends, setFriends] = useState(friendsData);
 
-    const friendsWithStatus = useMemo(() => {
+    const friendsList = useMemo(() => {
         return friends.map(friend => ({
             ...friend,
             status: getBalanceStatus(friend),
@@ -32,7 +32,7 @@ export function useFriendsViewModel() {
 
     // O hook expõe apenas os dados prontos que a View precisa.
     return {
-        friendsWithStatus,
+        friendsList,
         addFriend
     };
 }
