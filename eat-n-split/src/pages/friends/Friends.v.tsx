@@ -1,6 +1,7 @@
-import { Avatar, Button, List, ListItem, ListItemText, Stack, TextField } from "@mui/material";
+import { Avatar, Button, IconButton, List, ListItem, ListItemText, Stack, TextField } from "@mui/material";
 import { useFriendsViewModel } from "./Friends.vm";
 import { useState, type ChangeEvent } from "react";
+import DeleteIcon from '@mui/icons-material/Delete';
 
 function Friends() {
     const { friendsList, addFriend } = useFriendsViewModel();
@@ -30,13 +31,17 @@ function Friends() {
                         primary={friend.name}
                         secondary={friend.status}
                     />
+                    <Stack direction={"row"} >
+
+                    </Stack>
                     <Button variant={"outlined"} size={"small"}>Select</Button>
+                    <IconButton size={"small"} onClick={() => handleSubmit()}><DeleteIcon /></IconButton>
                 </ListItem>
             )}
-            <Stack sx={{ display: "flex", flexDirection: "column", gap: "5" }}>
+            <Stack direction={{ xs: 'column', sm: 'column' }} spacing={1}>
                 <TextField label="Name" name="name" value={newFriend.name} onChange={handleChange} />
                 <TextField label="Image" name="image" value={newFriend.image} onChange={handleChange} />
-                <Stack sx={{ backgroundColor: "blue" }}>
+                <Stack direction={'row'} spacing={1}>
                     <Button sx={{ backgroundColor: "aliceblue", width: "fit-content" }} variant={"outlined"} onClick={() => handleSubmit()}>Add friend</Button>
                 </Stack>
             </Stack>
